@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "it",
   "strings" : {
+    "auth_email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi con Email"
+          }
+        }
+      }
+    },
     "auth_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -26,9 +37,6 @@
     "Fields View" : {
 
     },
-    "Hello, world!" : {
-
-    },
     "Home View" : {
 
     },
@@ -51,12 +59,6 @@
     },
     "Key" : {
       "extractionState" : "manual"
-    },
-    "Log In" : {
-
-    },
-    "Login or Sign Up" : {
-
     },
     "map_tab" : {
       "extractionState" : "manual",
@@ -144,6 +146,160 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profilo"
+          }
+        }
+      }
+    },
+    "profile_setup_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizza il tuo profilo"
+          }
+        }
+      }
+    },
+    "profile_setup_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completa il tuo profilo per iniziare a giocare"
+          }
+        }
+      }
+    },
+    "profile_setup_tap_to_change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca per cambiare la foto"
+          }
+        }
+      }
+    },
+    "profile_setup_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
+        }
+      }
+    },
+    "profile_setup_name_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci il tuo nome"
+          }
+        }
+      }
+    },
+    "profile_setup_surname" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cognome"
+          }
+        }
+      }
+    },
+    "profile_setup_surname_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci il tuo cognome"
+          }
+        }
+      }
+    },
+    "profile_setup_date_of_birth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data di nascita"
+          }
+        }
+      }
+    },
+    "profile_setup_role" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruolo preferito"
+          }
+        }
+      }
+    },
+    "profile_setup_complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completa"
+          }
+        }
+      }
+    },
+    "role_player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giocatore"
+          }
+        }
+      }
+    },
+    "role_coach" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allenatore"
+          }
+        }
+      }
+    },
+    "role_manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manager"
+          }
+        }
+      }
+    },
+    "role_fan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tifoso"
           }
         }
       }
