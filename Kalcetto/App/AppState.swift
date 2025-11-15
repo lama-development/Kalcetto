@@ -30,7 +30,7 @@ class AppState: ObservableObject {
 		hasCompletedProfileSetup = false
 		currentUser = nil
 	}
-	
+
 	func completeProfileSetup(with user: User) {
 		currentUser = user
 		hasCompletedProfileSetup = true

@@ -3,162 +3,219 @@ import SwiftUI
 
 struct ProfileSetupView: View {
 	@EnvironmentObject var appState: AppState
-	@State private var name: String = ""
-	@State private var surname: String = ""
-	@State private var dateOfBirth: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
+	@State private var fullName: String = ""
+	@State private var nickname: String = ""
 	@State private var profileImage: UIImage?
 	@State private var showImagePicker = false
 	@State private var photoPickerItem: PhotosPickerItem?
+	@State private var errorMessage: String? = nil
+	@State private var isAnimating = false
+	@FocusState private var focusedField: Field?
+
+	enum Field: Hashable {
+		case fullName
+		case nickname
+	}
 
 	private var isFormValid: Bool {
-		!name.trimmingCharacters(in: .whitespaces).isEmpty
-			&& !surname.trimmingCharacters(in: .whitespaces).isEmpty
+		!fullName.trimmingCharacters(in: .whitespaces).isEmpty
+			&& !nickname.trimmingCharacters(in: .whitespaces).isEmpty
 	}
 
 	var body: some View {
 		ZStack {
 			Color("BackgroundColor")
 				.ignoresSafeArea()
-			ScrollView {
-				VStack(spacing: 24) {
-					// Header
-					VStack(spacing: 8) {
-						Text("profile_setup_title")
-							.font(.largeTitle)
-							.bold()
-							.foregroundColor(Color("TextColor"))
-						
-						Text("profile_setup_subtitle")
-							.font(.body)
-							.foregroundColor(Color("TextColor"))
-							.opacity(0.7)
-							.multilineTextAlignment(.center)
-					}
-					.padding(.top, 40)
-					
-					// Profile Picture Section
-					VStack(spacing: 16) {
-						ZStack {
+			VStack(spacing: 0) {
+				ScrollView(showsIndicators: false) {
+					VStack(spacing: 32) {
+						VStack(spacing: 12) {
+							Text("profile_setup_title")
+								.font(.custom("Onest", size: 32))
+								.fontWeight(.bold)
+								.foregroundColor(Color("TextColor"))
+								.multilineTextAlignment(.center)
+								.opacity(isAnimating ? 1 : 0)
+								.offset(y: isAnimating ? 0 : 10)
+							Text("profile_setup_subtitle")
+								.font(.custom("Onest", size: 18))
+								.fontWeight(.regular)
+								.foregroundColor(Color("TextColor").opacity(0.8))
+								.multilineTextAlignment(.center)
+								.padding(.horizontal, 32)
+								.opacity(isAnimating ? 1 : 0)
+								.offset(y: isAnimating ? 0 : 10)
+						}
+						.padding(.top, 40)
+						// Profile Picture Section
+						VStack(spacing: 16) {
+							ZStack {
+							// Main profile image circle
 							if let profileImage = profileImage {
 								Image(uiImage: profileImage)
 									.resizable()
 									.scaledToFill()
-									.frame(width: 120, height: 120)
-									.clipShape(Circle())
+									.frame(width: 130, height: 130)
+								.clipShape(Circle())
 							} else {
 								Circle()
-									.fill(Color.gray.opacity(0.2))
-									.frame(width: 120, height: 120)
+									.fill(Color("AccentColor").opacity(0.1))
+									.frame(width: 130, height: 130)
 									.overlay(
 										Image(systemName: "person.fill")
 											.font(.system(size: 50))
-											.foregroundColor(.gray)
+											.foregroundColor(Color("AccentColor"))
 									)
 							}
-
-							// Edit button overlay
-							Circle()
-								.fill(Color("AccentColor"))
-								.frame(width: 36, height: 36)
-								.overlay(
-									Image(systemName: "camera.fill")
-										.font(.system(size: 16))
-										.foregroundColor(Color("TextColorInverted"))
-								)
-								.offset(x: 42, y: 42)
+							// Camera button overlay
+								Circle()
+									.fill(Color("AccentColor"))
+									.frame(width: 40, height: 40)
+									.overlay(
+										Image(systemName: "camera.fill")
+											.foregroundColor(Color("TextColorInverted"))
+											.font(.system(size: 18, weight: .medium))
+									)
+									.offset(x: 45, y: 45)
+							}
+							.onTapGesture {
+								showImagePicker = true
+								focusedField = nil
+							}
+							.scaleEffect(isAnimating ? 1 : 0.8)
+							.opacity(isAnimating ? 1 : 0)
+							Text("profile_setup_tap_to_add_photo")
+								.font(.custom("Onest", size: 14))
+								.fontWeight(.regular)
+								.foregroundColor(Color("TextColor").opacity(0.6))
+								.opacity(isAnimating ? 1 : 0)
 						}
-						.onTapGesture {
-							showImagePicker = true
-						}
-
-						Text("profile_setup_tap_to_change")
-							.font(.caption)
-							.foregroundColor(Color("TextColor"))
-							.opacity(0.6)
-					}
-					.padding(.vertical, 16)
-
-					// Form Fields
-					VStack(spacing: 20) {
-						// Name Field
-						VStack(alignment: .leading, spacing: 8) {
-							Text("profile_setup_name")
-								.font(.subheadline)
-								.fontWeight(.medium)
-								.foregroundColor(Color("TextColor"))
-
-							TextField("profile_setup_name_placeholder", text: $name)
-								.textFieldStyle(.plain)
+						// Form Fields
+						VStack(spacing: 20) {
+							// Full Name Field
+							VStack(alignment: .leading, spacing: 8) {
+								Text("profile_setup_fullname")
+									.font(.custom("Onest", size: 14))
+									.fontWeight(.medium)
+									.foregroundColor(Color("TextColor"))
+								TextField("profile_setup_fullname_placeholder", text: $fullName)
+									.font(.custom("Onest", size: 16))
+									.fontWeight(.regular)
+									.textFieldStyle(.plain)
+									.padding()
+									.background(
+										RoundedRectangle(cornerRadius: 14)
+											.fill(Color("InputBackgroundColor"))
+											.overlay(
+												RoundedRectangle(cornerRadius: 14)
+													.stroke(
+														focusedField == .fullName
+															? Color("AccentColor") : Color.clear,
+														lineWidth: 2
+													)
+											)
+									)
+									.foregroundColor(Color("TextColor"))
+									.autocapitalization(.words)
+									.textContentType(.name)
+									.focused($focusedField, equals: .fullName)
+									.submitLabel(.next)
+									.onSubmit {
+										focusedField = .nickname
+									}
+							}
+							.opacity(isAnimating ? 1 : 0)
+							.offset(y: isAnimating ? 0 : 20)
+							// Nickname Field
+							VStack(alignment: .leading, spacing: 8) {
+								Text("profile_setup_nickname")
+									.font(.custom("Onest", size: 14))
+									.fontWeight(.medium)
+									.foregroundColor(Color("TextColor"))
+								TextField("profile_setup_nickname_placeholder", text: $nickname)
+									.font(.custom("Onest", size: 16))
+									.fontWeight(.regular)
+									.textFieldStyle(.plain)
+									.padding()
+									.background(
+										RoundedRectangle(cornerRadius: 14)
+											.fill(Color("InputBackgroundColor"))
+											.overlay(
+												RoundedRectangle(cornerRadius: 14)
+													.stroke(
+														focusedField == .nickname
+															? Color("AccentColor") : Color.clear,
+														lineWidth: 2
+													)
+											)
+									)
+									.foregroundColor(Color("TextColor"))
+									.autocapitalization(.none)
+									.textContentType(.username)
+									.focused($focusedField, equals: .nickname)
+									.submitLabel(.done)
+									.onSubmit {
+										if isFormValid {
+											validateAndComplete()
+										}
+									}
+							}
+							.opacity(isAnimating ? 1 : 0)
+							.offset(y: isAnimating ? 0 : 20)
+							// Error message
+							if let errorMessage = errorMessage {
+								HStack(spacing: 8) {
+									Image(systemName: "exclamationmark.circle.fill")
+										.foregroundColor(.red)
+										.font(.system(size: 14))
+									Text(errorMessage)
+										.font(.custom("Onest", size: 14))
+										.fontWeight(.medium)
+										.foregroundColor(.red)
+								}
 								.padding()
-								.background(Color.white)
-								.cornerRadius(12)
-								.overlay(
+								.frame(maxWidth: .infinity, alignment: .leading)
+								.background(
 									RoundedRectangle(cornerRadius: 12)
-										.stroke(Color.gray.opacity(0.2), lineWidth: 1)
+										.fill(Color.red.opacity(0.1))
 								)
+								.transition(.scale.combined(with: .opacity))
+							}
 						}
-
-						// Surname Field
-						VStack(alignment: .leading, spacing: 8) {
-							Text("profile_setup_surname")
-								.font(.subheadline)
-								.fontWeight(.medium)
-								.foregroundColor(Color("TextColor"))
-
-							TextField("profile_setup_surname_placeholder", text: $surname)
-								.textFieldStyle(.plain)
-								.padding()
-								.background(Color.white)
-								.cornerRadius(12)
-								.overlay(
-									RoundedRectangle(cornerRadius: 12)
-										.stroke(Color.gray.opacity(0.2), lineWidth: 1)
-								)
-						}
-						
-						// Date of Birth Field
-						VStack(alignment: .leading, spacing: 8) {
-							Text("profile_setup_date_of_birth")
-								.font(.subheadline)
-								.fontWeight(.medium)
-								.foregroundColor(Color("TextColor"))
-							
-							DatePicker(
-								"",
-								selection: $dateOfBirth,
-								in: ...Date(),
-								displayedComponents: .date
-							)
-							.datePickerStyle(.compact)
-							.labelsHidden()
-							.padding()
-							.background(Color.white)
-							.cornerRadius(12)
-							.overlay(
-								RoundedRectangle(cornerRadius: 12)
-									.stroke(Color.gray.opacity(0.2), lineWidth: 1)
-							)
-						}
+						.padding(.horizontal, 28)
+						Spacer(minLength: 100)
 					}
-					.padding(.horizontal, 24)
-
-					// Complete Button
-					Button(action: {
-						completeProfileSetup()
-					}) {
-						Text("profile_setup_complete")
-							.font(.headline)
-							.foregroundColor(.white)
-							.frame(maxWidth: .infinity)
-							.frame(height: 56)
-							.background(isFormValid ? Color("AccentColor") : Color.gray)
-							.cornerRadius(12)
-					}
-					.disabled(!isFormValid)
-					.padding(.horizontal, 24)
-					.padding(.top, 16)
-					.padding(.bottom, 32)
 				}
+				.scrollDismissesKeyboard(.interactively)
+				// Bottom Button
+				VStack(spacing: 0) {
+					Divider()
+						.background(Color("TextColor").opacity(0.1))
+					Button(action: {
+						focusedField = nil
+						validateAndComplete()
+					}) {
+						HStack(spacing: 10) {
+							Text("profile_setup_cta")
+								.font(.custom("Onest", size: 18))
+								.fontWeight(.semibold)
+								.foregroundColor(Color("TextColorInverted"))
+						}
+						.frame(maxWidth: .infinity)
+						.frame(height: 48)
+					}
+					.buttonStyle(.glassProminent)
+					.tint(Color("AccentColor"))
+					.disabled(!isFormValid)
+					.padding(.horizontal, 28)
+					.padding(.top, 16)
+					.padding(.bottom, 20)
+					.opacity(isAnimating ? 1 : 0)
+				}
+				.background(
+					Color("BackgroundColor")
+						.ignoresSafeArea(edges: .bottom)
+				)
 			}
 		}
 		.photosPicker(
@@ -171,21 +228,53 @@ struct ProfileSetupView: View {
 				if let data = try? await newItem?.loadTransferable(type: Data.self),
 					let image = UIImage(data: data)
 				{
-					profileImage = image
+					withAnimation(.easeInOut(duration: 0.3)) {
+						profileImage = image
+					}
 				}
+			}
+		}
+		.onAppear {
+			withAnimation(.easeOut(duration: 0.6)) {
+				isAnimating = true
 			}
 		}
 	}
 
-	private func completeProfileSetup() {
+	private func validateAndComplete() {
+		// Clear previous errors
+		errorMessage = nil
+
+		// Example validation logic
+		let trimmedNickname = nickname.trimmingCharacters(in: .whitespaces)
+			.lowercased()
+
+		// Check for reserved nicknames
+		if trimmedNickname == "admin" || trimmedNickname == "kalcetto" {
+			withAnimation {
+				errorMessage = "profile_setup_nickname_already_taken"
+			}
+			return
+		}
+
+		// Check nickname length
+		if trimmedNickname.count < 3 {
+			withAnimation {
+				errorMessage = "Il nickname deve contenere almeno 3 caratteri"
+			}
+			return
+		}
+
 		let imageData = profileImage?.jpegData(compressionQuality: 0.7)
 		let user = User(
-			name: name.trimmingCharacters(in: .whitespaces),
-			surname: surname.trimmingCharacters(in: .whitespaces),
-			dateOfBirth: dateOfBirth,
+			fullName: fullName.trimmingCharacters(in: .whitespaces),
+			nickname: nickname.trimmingCharacters(in: .whitespaces),
 			profileImageData: imageData
 		)
-		appState.completeProfileSetup(with: user)
+
+		withAnimation(.easeInOut(duration: 0.3)) {
+			appState.completeProfileSetup(with: user)
+		}
 	}
 }
 
