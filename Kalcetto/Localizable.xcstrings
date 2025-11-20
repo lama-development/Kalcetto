@@ -278,13 +278,35 @@
         }
       }
     },
-    "terms_of_service" : {
+    "terms_of_service_prefix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuando accetti i nostri "
+          }
+        }
+      }
+    },
+    "terms_of_service_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Termini di Servizio"
+          }
+        }
+      }
+    },
+    "terms_of_service_url" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://kalcetto.com/termini-di-servizio"
           }
         }
       }

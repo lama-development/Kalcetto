@@ -92,26 +92,28 @@ struct AuthView: View {
 					.padding(.horizontal, 28)
 				}
 				Spacer()
-				// Privacy & Terms
-				Text(.init("auth_terms"))
-					.font(.custom("Onest", size: 12))
-					.fontWeight(.regular)
-					.tint(Color("AccentColor"))
-					.foregroundColor(Color("TextColor").opacity(0.6))
-					.multilineTextAlignment(.center)
-					.padding(.horizontal, 40)
-					.padding(.bottom, 20)
-					.environment(\.openURL, OpenURLAction { url in
-						if url.absoluteString.contains("davidelamarca.com/terms") {
-							showTermsSheet = true
-							return .handled
-						}
-						return .systemAction
-					})
+				HStack(spacing: 0) {
+					Text("terms_of_service_prefix")
+						.font(.custom("Onest", size: 12))
+						.foregroundColor(Color("TextColor").opacity(0.6))
+					Button(action: { showTermsSheet = true }) {
+						Text("terms_of_service_title")
+							.font(.custom("Onest", size: 12))
+							.foregroundColor(Color("AccentColor"))
+							.underline()
+					}
+					.buttonStyle(.plain)
+					Text(".")
+						.font(.custom("Onest", size: 12))
+						.foregroundColor(Color("TextColor").opacity(0.6))
+				}
+				.multilineTextAlignment(.center)
+				.padding(.horizontal, 40)
+				.padding(.bottom, 20)
 			}
 		}
 		.sheet(isPresented: $showTermsSheet) {
-			WebViewSheet(url: URL(string: "https://davidelamarca.com/terms")!)
+			WebViewSheet(url: URL(string: "terms_of_service_url")!)
 		}
 	}
 }

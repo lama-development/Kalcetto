@@ -32,16 +32,15 @@ struct WebViewSheet: View {
 		NavigationView {
 			WebView(url: url)
 				.ignoresSafeArea()
-				.navigationTitle("terms_of_service")
+				.navigationTitle("terms_of_service_title")
 				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
 					ToolbarItem(placement: .navigationBarTrailing) {
 						Button(action: {
 							dismiss()
 						}) {
-							Image(systemName: "xmark.circle.fill")
-								.font(.system(size: 24))
-								.foregroundColor(Color("TextColor").opacity(0.6))
+							Image(systemName: "xmark")
+								.font(.system(size: 12))
 						}
 					}
 				}
