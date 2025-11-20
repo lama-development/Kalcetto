@@ -3,7 +3,6 @@ import SwiftUI
 
 struct AuthView: View {
 	@EnvironmentObject var appState: AppState
-	@State private var isAnimating = false
 	@State private var showTermsSheet = false
 	@Environment(\.openURL) var openURL
 	
@@ -18,15 +17,11 @@ struct AuthView: View {
 						.resizable()
 						.scaledToFit()
 						.frame(width: 100, height: 100)
-						.scaleEffect(isAnimating ? 1 : 0.8)
-						.opacity(isAnimating ? 1 : 0)
 					VStack(alignment: .center, spacing: 10) {
 						Text("auth_title")
 							.font(.custom("Onest", size: 32))
 							.fontWeight(.bold)
 							.foregroundStyle(Color("TextColor"))
-							.opacity(isAnimating ? 1 : 0)
-							.offset(y: isAnimating ? 0 : 10)
 						Text("auth_subtitle")
 							.font(.custom("Onest", size: 18))
 							.fontWeight(.regular)
@@ -34,8 +29,6 @@ struct AuthView: View {
 							.opacity(0.8)
 							.multilineTextAlignment(.center)
 							.padding(.horizontal, 20)
-							.opacity(isAnimating ? 1 : 0)
-							.offset(y: isAnimating ? 0 : 10)
 					}
 					.padding(.bottom, 40)
 					VStack(spacing: 16) {
@@ -58,8 +51,6 @@ struct AuthView: View {
 						)
 						.signInWithAppleButtonStyle(.whiteOutline)
 						.frame(height: 56)
-						.opacity(isAnimating ? 1 : 0)
-						.offset(y: isAnimating ? 0 : 20)
 						// Divider
 						HStack(spacing: 12) {
 							Rectangle()
@@ -74,7 +65,6 @@ struct AuthView: View {
 								.frame(height: 1)
 						}
 						.padding(.vertical, 8)
-						.opacity(isAnimating ? 1 : 0)
 						// Email Sign-In Button
 						Button(action: {
 							withAnimation(.easeInOut(duration: 0.3)) {
@@ -98,8 +88,6 @@ struct AuthView: View {
 									.fill(Color("AccentColor"))
 							)
 						}
-						.opacity(isAnimating ? 1 : 0)
-						.offset(y: isAnimating ? 0 : 20)
 					}
 					.padding(.horizontal, 28)
 				}
@@ -113,7 +101,6 @@ struct AuthView: View {
 					.multilineTextAlignment(.center)
 					.padding(.horizontal, 40)
 					.padding(.bottom, 20)
-					.opacity(isAnimating ? 1 : 0)
 					.environment(\.openURL, OpenURLAction { url in
 						if url.absoluteString.contains("davidelamarca.com/terms") {
 							showTermsSheet = true
@@ -125,11 +112,6 @@ struct AuthView: View {
 		}
 		.sheet(isPresented: $showTermsSheet) {
 			WebViewSheet(url: URL(string: "https://davidelamarca.com/terms")!)
-		}
-		.onAppear {
-			withAnimation(.easeOut(duration: 0.6)) {
-				isAnimating = true
-			}
 		}
 	}
 }

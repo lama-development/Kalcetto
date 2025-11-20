@@ -56,18 +56,6 @@
         }
       }
     },
-    "Benvenuto su Kalcetto" : {
-
-    },
-    "Esplora campi nelle vicinanze" : {
-
-    },
-    "Fields View" : {
-
-    },
-    "Home View" : {
-
-    },
     "home_tab" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -85,11 +73,16 @@
         }
       }
     },
-    "Il tuo profilo e impostazioni" : {
-
-    },
-    "Key" : {
-      "extractionState" : "manual"
+    "key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "key"
+          }
+        }
+      }
     },
     "map_tab" : {
       "extractionState" : "manual",
@@ -141,9 +134,6 @@
         }
       }
     },
-    "Players View" : {
-
-    },
     "players_tab" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -160,9 +150,6 @@
           }
         }
       }
-    },
-    "Profile View" : {
-
     },
     "profile_setup_complete" : {
       "extractionState" : "manual",
@@ -291,8 +278,16 @@
         }
       }
     },
-    "Trova giocatori vicino a te" : {
-
+    "terms_of_service" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termini di Servizio"
+          }
+        }
+      }
     }
   },
   "version" : "1.1"

@@ -9,7 +9,6 @@ struct ProfileSetupView: View {
 	@State private var showImagePicker = false
 	@State private var photoPickerItem: PhotosPickerItem?
 	@State private var errorMessage: String? = nil
-	@State private var isAnimating = false
 	@FocusState private var focusedField: Field?
 
 	enum Field: Hashable {
@@ -35,16 +34,12 @@ struct ProfileSetupView: View {
 								.fontWeight(.bold)
 								.foregroundColor(Color("TextColor"))
 								.multilineTextAlignment(.center)
-								.opacity(isAnimating ? 1 : 0)
-								.offset(y: isAnimating ? 0 : 10)
 							Text("profile_setup_subtitle")
 								.font(.custom("Onest", size: 18))
 								.fontWeight(.regular)
 								.foregroundColor(Color("TextColor").opacity(0.8))
 								.multilineTextAlignment(.center)
 								.padding(.horizontal, 32)
-								.opacity(isAnimating ? 1 : 0)
-								.offset(y: isAnimating ? 0 : 10)
 						}
 						.padding(.top, 40)
 						// Profile Picture Section
@@ -82,13 +77,10 @@ struct ProfileSetupView: View {
 								showImagePicker = true
 								focusedField = nil
 							}
-							.scaleEffect(isAnimating ? 1 : 0.8)
-							.opacity(isAnimating ? 1 : 0)
 							Text("profile_setup_tap_to_add_photo")
 								.font(.custom("Onest", size: 14))
 								.fontWeight(.regular)
 								.foregroundColor(Color("TextColor").opacity(0.6))
-								.opacity(isAnimating ? 1 : 0)
 						}
 						// Form Fields
 						VStack(spacing: 20) {
@@ -124,8 +116,6 @@ struct ProfileSetupView: View {
 										focusedField = .nickname
 									}
 							}
-							.opacity(isAnimating ? 1 : 0)
-							.offset(y: isAnimating ? 0 : 20)
 							// Nickname Field
 							VStack(alignment: .leading, spacing: 8) {
 								Text("profile_setup_nickname")
@@ -160,8 +150,6 @@ struct ProfileSetupView: View {
 										}
 									}
 							}
-							.opacity(isAnimating ? 1 : 0)
-							.offset(y: isAnimating ? 0 : 20)
 							// Error message
 							if let errorMessage = errorMessage {
 								HStack(spacing: 8) {
@@ -210,7 +198,6 @@ struct ProfileSetupView: View {
 					.padding(.horizontal, 28)
 					.padding(.top, 16)
 					.padding(.bottom, 20)
-					.opacity(isAnimating ? 1 : 0)
 				}
 				.background(
 					Color("BackgroundColor")
@@ -232,11 +219,6 @@ struct ProfileSetupView: View {
 						profileImage = image
 					}
 				}
-			}
-		}
-		.onAppear {
-			withAnimation(.easeOut(duration: 0.6)) {
-				isAnimating = true
 			}
 		}
 	}

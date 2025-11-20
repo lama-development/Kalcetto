@@ -32,7 +32,7 @@ struct WebViewSheet: View {
 		NavigationView {
 			WebView(url: url)
 				.ignoresSafeArea()
-				.navigationTitle("Termini di Servizio")
+				.navigationTitle("terms_of_service")
 				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
 					ToolbarItem(placement: .navigationBarTrailing) {

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct OnboardingView: View {
 	@EnvironmentObject var appState: AppState
-	@State private var isAnimating = false
 	var body: some View {
 		ZStack {
 			Image("OnboardingBackground")
@@ -24,15 +23,11 @@ struct OnboardingView: View {
 					.font(.custom("Onest", size: 32))
 					.fontWeight(.bold)
 					.foregroundStyle(.white)
-					.opacity(isAnimating ? 1 : 0)
-					.offset(y: isAnimating ? 0 : 20)
 				Text("onboarding_subtitle")
 					.font(.custom("Onest", size: 18))
 					.fontWeight(.regular)
 					.foregroundStyle(.white)
 					.opacity(0.8)
-					.opacity(isAnimating ? 1 : 0)
-					.offset(y: isAnimating ? 0 : 20)
 				Button(action: {
 					withAnimation(.easeInOut(duration: 0.3)) {
 						appState.completeOnboarding()
@@ -50,17 +45,10 @@ struct OnboardingView: View {
 				.buttonStyle(.glassProminent)
 				.tint(Color("AccentColor"))
 				.padding(.top, 12)
-				.scaleEffect(isAnimating ? 1 : 0.9)
-				.opacity(isAnimating ? 1 : 0)
 			}
 			.padding(.horizontal, 28)
 			.safeAreaPadding(.bottom)
 			.padding(.bottom, 40)
-		}
-		.onAppear {
-			withAnimation(.easeOut(duration: 0.8).delay(0.2)) {
-				isAnimating = true
-			}
 		}
 	}
 }
