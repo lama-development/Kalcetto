@@ -1,60 +1,34 @@
 {
   "sourceLanguage" : "it",
   "strings" : {
-    "auth_email" : {
-      "extractionState" : "manual",
+    "%lld %@" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accedi con Email"
+            "state" : "new",
+            "value" : "%1$lld %2$@"
           }
         }
       }
     },
-    "auth_or" : {
-      "extractionState" : "manual",
+    "%lld pts" : {
+
+    },
+    "%lld/%lld" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oppure"
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
           }
         }
       }
     },
-    "auth_subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accedi o crea un account ed inizia a giocare ora."
-          }
-        }
-      }
+    "Campo di calcio" : {
+
     },
-    "auth_terms" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuando accetti i [termini di servizio](https://kalcetto.com/terms)."
-          }
-        }
-      }
-    },
-    "auth_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unisciti a Kalcetto"
-          }
-        }
-      }
+    "Completo" : {
+
     },
     "home_tab" : {
       "extractionState" : "manual",
@@ -73,66 +47,28 @@
         }
       }
     },
-    "key" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "key"
-          }
-        }
-      }
-    },
-    "map_tab" : {
+    "matches_tab" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Map"
+            "value" : "Matches"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mappa"
+            "value" : "Partite"
           }
         }
       }
     },
-    "onboarding_cta" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inizia"
-          }
-        }
-      }
+    "Mostra tutto" : {
+
     },
-    "onboarding_subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scopri giocatori vicini, organizza partite e monitora le tue performance."
-          }
-        }
-      }
-    },
-    "onboarding_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calcetto, senza limiti"
-          }
-        }
-      }
+    "Partite vicine" : {
+
     },
     "players_tab" : {
       "extractionState" : "manual",
@@ -147,116 +83,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giocatori"
-          }
-        }
-      }
-    },
-    "profile_setup_complete" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Completa"
-          }
-        }
-      }
-    },
-    "profile_setup_cta" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inizia"
-          }
-        }
-      }
-    },
-    "profile_setup_fullname" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome e Cognome"
-          }
-        }
-      }
-    },
-    "profile_setup_fullname_placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mario Rossi"
-          }
-        }
-      }
-    },
-    "profile_setup_nickname" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nickname"
-          }
-        }
-      }
-    },
-    "profile_setup_nickname_already_taken" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Questo nickname è già in uso. Provane un altro."
-          }
-        }
-      }
-    },
-    "profile_setup_nickname_placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mariorossi10"
-          }
-        }
-      }
-    },
-    "profile_setup_subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personalizza il tuo profilo e inizia a giocare."
-          }
-        }
-      }
-    },
-    "profile_setup_tap_to_add_photo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tocca per cambiare la foto"
-          }
-        }
-      }
-    },
-    "profile_setup_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Completa il tuo profilo"
           }
         }
       }
@@ -278,35 +104,70 @@
         }
       }
     },
-    "terms_of_service_prefix" : {
+    "quick_actions_create_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create and invite players"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continuando accetti i nostri "
+            "value" : "Crea e invita giocatori"
           }
         }
       }
     },
-    "terms_of_service_title" : {
+    "quick_actions_create_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize a match"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Termini di Servizio"
+            "value" : "Organizza una partita"
           }
         }
       }
     },
-    "terms_of_service_url" : {
+    "quick_actions_search_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join matches near you"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "https://kalcetto.com/termini-di-servizio"
+            "value" : "Unisciti a partite vicino a te"
+          }
+        }
+      }
+    },
+    "quick_actions_search_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find matches"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova partite"
           }
         }
       }

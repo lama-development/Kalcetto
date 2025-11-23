@@ -5,7 +5,21 @@ struct MainTabView: View {
 
 	var body: some View {
 		TabView(selection: $selectedTab) {
-			// Home Tab
+			
+			NavigationStack {
+				ZStack {
+					Color("BackgroundColor")
+						.ignoresSafeArea()
+					VStack(spacing: 20) {
+						HomeView()
+					}
+				}
+			}
+			.tabItem {
+				Label("home_tab", systemImage: "house")
+			}
+			.tag(0)
+			
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
@@ -13,14 +27,13 @@ struct MainTabView: View {
 					VStack(spacing: 20) {
 					}
 				}
-				.navigationTitle("home_tab")
+				.navigationTitle("matches_tab")
 			}
 			.tabItem {
-				Label("home_tab", systemImage: "house.fill")
+				Label("matches_tab", systemImage: "sportscourt")
 			}
-			.tag(0)
+			.tag(1)
 
-			// Players Tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
@@ -33,24 +46,8 @@ struct MainTabView: View {
 			.tabItem {
 				Label("players_tab", systemImage: "soccerball")
 			}
-			.tag(1)
-
-			// Map/Fields Tab
-			NavigationStack {
-				ZStack {
-					Color("BackgroundColor")
-						.ignoresSafeArea()
-					VStack(spacing: 20) {
-					}
-				}
-				.navigationTitle("map_tab")
-			}
-			.tabItem {
-				Label("map_tab", systemImage: "map")
-			}
 			.tag(2)
 
-			// Profile Tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
