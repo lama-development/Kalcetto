@@ -47,6 +47,23 @@
         }
       }
     },
+    "match_status_full" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completo"
+          }
+        }
+      }
+    },
     "matches_tab" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -66,6 +83,23 @@
     },
     "Mostra tutto" : {
 
+    },
+    "nearby_matches" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nearby matches"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partite vicine"
+          }
+        }
+      }
     },
     "Partite vicine" : {
 
@@ -168,6 +202,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trova partite"
+          }
+        }
+      }
+    },
+    "view_all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View all"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra tutto"
           }
         }
       }

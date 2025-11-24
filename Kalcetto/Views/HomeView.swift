@@ -6,8 +6,8 @@ struct HomeView: View {
 	var body: some View {
 		NavigationView {
 			ScrollView(showsIndicators: false) {
-				VStack(alignment: .leading, spacing: 24) {
-					// Quick Actions
+				VStack(alignment: .leading, spacing: 36) {
+					// Quick actions
 					VStack(alignment: .leading, spacing: 12) {
 						QuickActions(
 							onOrganizeMatch: viewModel.organizeMatch,
@@ -15,28 +15,36 @@ struct HomeView: View {
 						)
 					}
 					.padding(.horizontal, 20)
-
-					// Nearby Matches Section
-					VStack(alignment: .leading, spacing: 16) {
+					// Nearby matches
+					VStack(alignment: .leading, spacing: 24) {
 						HStack {
-							Text("Partite vicine")
+							Text("nearby_matches")
 								.font(.system(size: 24, weight: .semibold))
 								.foregroundColor(Color("TextColor"))
-
 							Spacer()
-
 							Button(action: viewModel.viewAllNearbyMatches) {
 								HStack(spacing: 4) {
-									Text("Mostra tutto")
-										.font(.system(size: 15, weight: .medium))
+									Text("view_all")
+										.font(.system(size: 12, weight: .semibold))
 									Image(systemName: "chevron.right")
-										.font(.system(size: 12, weight: .medium))
+										.font(.system(size: 10, weight: .semibold))
 								}
-								.foregroundColor(Color("TextColor").opacity(0.5))
+								.foregroundColor(Color.accentColor)
+								.padding(.horizontal, 12)
+								.padding(.vertical, 6)
+								.background(
+									Capsule()
+										.fill(Color.accentColor.opacity(0.15))
+								)
+								.overlay(
+									Capsule()
+										.strokeBorder(Color.accentColor.opacity(0.1), lineWidth: 1)
+								)
 							}
+							.buttonStyle(.plain)
 						}
 						.padding(.horizontal, 20)
-
+						// Empty state view
 						if viewModel.nearbyMatches.isEmpty {
 							EmptyStateView(
 								icon: "location.slash",
@@ -57,7 +65,6 @@ struct HomeView: View {
 							}
 						}
 					}
-
 					Spacer(minLength: 20)
 				}
 				.padding(.top, 20)
@@ -70,30 +77,6 @@ struct HomeView: View {
 		.onAppear {
 			viewModel.loadData()
 		}
-	}
-}
-
-struct EmptyStateView: View {
-	let icon: String
-	let title: String
-	let subtitle: String
-
-	var body: some View {
-		VStack(spacing: 12) {
-			Image(systemName: icon)
-				.font(.system(size: 40))
-				.foregroundColor(Color("TextColor").opacity(0.2))
-
-			Text(title)
-				.font(.system(size: 16, weight: .medium))
-				.foregroundColor(Color("TextColor").opacity(0.5))
-		}
-		.frame(maxWidth: .infinity)
-		.padding(.vertical, 50)
-		.background(
-			RoundedRectangle(cornerRadius: 24)
-				.fill(Color("InputBackgroundColor"))
-		)
 	}
 }
 

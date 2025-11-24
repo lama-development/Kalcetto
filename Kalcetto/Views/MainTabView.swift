@@ -5,7 +5,7 @@ struct MainTabView: View {
 
 	var body: some View {
 		TabView(selection: $selectedTab) {
-			
+			// Home tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
@@ -19,7 +19,7 @@ struct MainTabView: View {
 				Label("home_tab", systemImage: "house")
 			}
 			.tag(0)
-			
+			// Matches tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
@@ -33,7 +33,7 @@ struct MainTabView: View {
 				Label("matches_tab", systemImage: "sportscourt")
 			}
 			.tag(1)
-
+			// Players tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")
@@ -47,7 +47,7 @@ struct MainTabView: View {
 				Label("players_tab", systemImage: "soccerball")
 			}
 			.tag(2)
-
+			// Profile tab
 			NavigationStack {
 				ZStack {
 					Color("BackgroundColor")

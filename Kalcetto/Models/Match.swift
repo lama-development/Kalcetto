@@ -79,7 +79,7 @@ struct Match: Identifiable, Codable {
 			distance: 0.8
 		),
 		Match(
-			title: "Torneo del weekend",
+			title: "Torneo del weekend del porco dio madonna",
 			location: "Oratorio San Marco",
 			date: Date().addingTimeInterval(172800),
 			maxPlayers: 12,
