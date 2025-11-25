@@ -3,6 +3,7 @@ import Foundation
 struct Player: Identifiable, Codable {
 	let id: UUID
 	var name: String
+	var handle: String
 	var profileImage: String?
 	var points: Int
 	var matchesPlayed: Int
@@ -13,6 +14,7 @@ struct Player: Identifiable, Codable {
 	init(
 		id: UUID = UUID(),
 		name: String,
+		handle: String,
 		profileImage: String? = nil,
 		points: Int = 0,
 		matchesPlayed: Int = 0,
@@ -22,6 +24,7 @@ struct Player: Identifiable, Codable {
 	) {
 		self.id = id
 		self.name = name
+		self.handle = handle
 		self.profileImage = profileImage
 		self.points = points
 		self.matchesPlayed = matchesPlayed
@@ -42,6 +45,7 @@ struct Player: Identifiable, Codable {
 	// Mock data
 	static let mock = Player(
 		name: "Mario Rossi",
+		handle: "mariorossi",
 		profileImage: "person.fill",
 		points: 450,
 		matchesPlayed: 24,

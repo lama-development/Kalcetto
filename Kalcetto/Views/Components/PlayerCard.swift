@@ -1,8 +1,3 @@
-//
-//  PlayerCard.swift
-//  Kalcetto
-//
-
 import SwiftUI
 
 struct PlayerCard: View {
@@ -11,62 +6,67 @@ struct PlayerCard: View {
 
 	var body: some View {
 		Button(action: onTap) {
-			HStack(spacing: 20) {
-				// Profile Image
+			HStack(spacing: 16) {
 				ZStack {
 					Circle()
-						.fill(Color("TextColor").opacity(0.06))
+						.fill(Color("TextColor").opacity(0.08))
 						.frame(width: 64, height: 64)
-
 					if let profileImage = player.profileImage {
 						Image(systemName: profileImage)
 							.resizable()
 							.scaledToFit()
 							.frame(width: 32, height: 32)
-							.foregroundColor(Color("TextColor").opacity(0.6))
+							.foregroundColor(Color("TextColor").opacity(0.8))
 					} else {
-						Image(systemName: "person.fill")
+						Image(systemName: "figure.soccer")
 							.resizable()
 							.scaledToFit()
 							.frame(width: 32, height: 32)
-							.foregroundColor(Color("TextColor").opacity(0.6))
+							.foregroundColor(Color("TextColor").opacity(0.8))
 					}
 				}
-
 				// Player Info
-				VStack(alignment: .leading, spacing: 4) {
+				VStack(alignment: .leading, spacing: 6) {
 					Text(player.name)
-						.font(.system(size: 22, weight: .semibold))
+						.font(.system(size: 20, weight: .bold))
 						.foregroundColor(Color("TextColor"))
-
-					HStack(spacing: 6) {
-						Text(player.level.name)
-							.font(.system(size: 15, weight: .regular))
-							.foregroundColor(Color("TextColor").opacity(0.5))
-
-						Circle()
-							.fill(Color("TextColor").opacity(0.3))
-							.frame(width: 3, height: 3)
-
-						Text("\(player.points) pts")
-							.font(.system(size: 15, weight: .regular))
-							.foregroundColor(Color("TextColor").opacity(0.5))
+					HStack(spacing: 8) {
+						// User handle
+						Text("@\(player.handle)")
+							.font(.system(size: 13, weight: .semibold))
+							.foregroundColor(Color("TextColor").opacity(0.6))
+						// Reputation score
+						HStack(spacing: 4) {
+							Image(systemName: "star.fill")
+								.font(.system(size: 11, weight: .semibold))
+								.foregroundColor(Color.yellow.opacity(0.7))
+							Text(String(format: "%.1f", player.rating))
+								.font(.system(size: 13, weight: .semibold))
+								.foregroundColor(Color("TextColor").opacity(0.7))
+						}
+						.padding(.horizontal, 8)
+						.padding(.vertical, 4)
+						.background(Color.yellow.opacity(0.15))
+						.cornerRadius(6)
 					}
 				}
-
 				Spacer()
-
+				// Chevron
 				Image(systemName: "chevron.right")
-					.font(.system(size: 13, weight: .medium))
-					.foregroundColor(Color("TextColor").opacity(0.2))
+					.font(.system(size: 12, weight: .semibold))
+					.foregroundColor(Color("TextColor").opacity(0.5))
 			}
-			.padding(20)
-			.background(
-				RoundedRectangle(cornerRadius: 48)
-					.fill(Color("InputBackgroundColor"))
-			)
+			.padding(16)
 		}
 		.buttonStyle(PlainButtonStyle())
+		.background(
+			RoundedRectangle(cornerRadius: 16)
+				.fill(Color("TextColor").opacity(0.05))
+				.overlay(
+					RoundedRectangle(cornerRadius: 16)
+						.stroke(Color("TextColor").opacity(0.1), lineWidth: 1)
+				)
+		)
 	}
 }
 

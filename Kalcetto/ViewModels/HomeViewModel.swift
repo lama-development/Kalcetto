@@ -7,6 +7,9 @@ class HomeViewModel: ObservableObject {
 	@Published var nearbyMatches: [Match] = []
 	@Published var myMatches: [Match] = []
 	@Published var isLoading: Bool = false
+	@Published var pendingReviews: Int = 3
+	@Published var badgesEarned: Int = 12
+	@Published var friendsCount: Int = 48
     
 	init() {
 		// Initialize with mock data
@@ -52,5 +55,25 @@ class HomeViewModel: ObservableObject {
 	func selectMatch(_ match: Match) {
 		// TODO: Navigate to match detail screen
 		print("Selected match: \(match.title)")
+	}
+	
+	func reviewPlayers() {
+		// TODO: Navigate to review players screen
+		print("Review players tapped")
+	}
+	
+	func viewBadges() {
+		// TODO: Navigate to badges screen
+		print("View badges tapped")
+	}
+	
+	func viewFriends() {
+		// TODO: Navigate to friends screen
+		print("View friends tapped")
+	}
+	
+	func exploreFields() {
+		// TODO: Navigate to explore fields screen
+		print("Explore fields tapped")
 	}
 }

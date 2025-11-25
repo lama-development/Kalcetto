@@ -6,20 +6,71 @@ struct HomeView: View {
 	var body: some View {
 		NavigationView {
 			ScrollView(showsIndicators: false) {
+				// Player card
+				VStack(alignment: .leading, spacing: 16) {
+					PlayerCard(
+						player: viewModel.currentPlayer,
+						onTap: viewModel.viewProfile
+					)
+					PlayerStatsCard(player: viewModel.currentPlayer)
+				}
+				.padding(.horizontal, 20)
+				.padding(.top, 20)
+				// Quick actions
 				VStack(alignment: .leading, spacing: 36) {
-					// Quick actions
-					VStack(alignment: .leading, spacing: 12) {
+					VStack(alignment: .leading, spacing: 20) {
+						Text("quick_actions_title")
+							.font(.system(size: 20, weight: .semibold))
+							.foregroundColor(Color("TextColor"))
 						QuickActions(
 							onOrganizeMatch: viewModel.organizeMatch,
 							onFindMatch: viewModel.findMatch
 						)
 					}
 					.padding(.horizontal, 20)
-					// Nearby matches
-					VStack(alignment: .leading, spacing: 24) {
+					// My matches
+					VStack(alignment: .leading, spacing: 20) {
 						HStack {
-							Text("nearby_matches")
-								.font(.system(size: 24, weight: .semibold))
+							Text("my_matches_title")
+								.font(.system(size: 20, weight: .semibold))
+								.foregroundColor(Color("TextColor"))
+							Spacer()
+							Button(action: viewModel.viewAllMyMatches) {
+								HStack(spacing: 4) {
+									Text("view_all")
+										.font(.system(size: 12, weight: .semibold))
+									Image(systemName: "chevron.right")
+										.font(.system(size: 8, weight: .semibold))
+								}
+								.foregroundColor(Color("TextColor").opacity(0.6))
+							}
+							.buttonStyle(.plain)
+						}
+						.padding(.horizontal, 20)
+						// Empty state view
+						if viewModel.myMatches.isEmpty {
+							EmptyStateView(
+								icon: "sportscourt",
+								title: "Nessuna partita in programma",
+								subtitle: "Partecipa a una partita per vederla qui!"
+							)
+							.padding(.horizontal, 20)
+						} else {
+							VStack(spacing: 12) {
+								ForEach(viewModel.myMatches) { match in
+									MatchListItem(match: match) {
+										viewModel.selectMatch(match)
+									}
+								}
+							}
+							.padding(.horizontal, 20)
+						}
+					}
+					// Nearby matches
+					VStack(alignment: .leading, spacing: 20) {
+						HStack {
+							Text("nearby_matches_title")
+								.font(.system(size: 20, weight: .semibold))
 								.foregroundColor(Color("TextColor"))
 							Spacer()
 							Button(action: viewModel.viewAllNearbyMatches) {
@@ -27,19 +78,9 @@ struct HomeView: View {
 									Text("view_all")
 										.font(.system(size: 12, weight: .semibold))
 									Image(systemName: "chevron.right")
-										.font(.system(size: 10, weight: .semibold))
+										.font(.system(size: 8, weight: .semibold))
 								}
-								.foregroundColor(Color.accentColor)
-								.padding(.horizontal, 12)
-								.padding(.vertical, 6)
-								.background(
-									Capsule()
-										.fill(Color.accentColor.opacity(0.15))
-								)
-								.overlay(
-									Capsule()
-										.strokeBorder(Color.accentColor.opacity(0.1), lineWidth: 1)
-								)
+								.foregroundColor(Color("TextColor").opacity(0.6))
 							}
 							.buttonStyle(.plain)
 						}
@@ -64,6 +105,23 @@ struct HomeView: View {
 								.padding(.horizontal, 20)
 							}
 						}
+					}
+					// Action Cards
+					VStack(alignment: .leading, spacing: 20) {
+						Text("actions_section_title")
+							.font(.system(size: 20, weight: .semibold))
+							.foregroundColor(Color("TextColor"))
+							.padding(.horizontal, 20)
+						ActionCards(
+							pendingReviews: viewModel.pendingReviews,
+							badgesEarned: viewModel.badgesEarned,
+							friendsCount: viewModel.friendsCount,
+							onReviewPlayers: viewModel.reviewPlayers,
+							onViewBadges: viewModel.viewBadges,
+							onViewFriends: viewModel.viewFriends,
+							onExploreFields: viewModel.exploreFields
+						)
+						.padding(.horizontal, 20)
 					}
 					Spacer(minLength: 20)
 				}

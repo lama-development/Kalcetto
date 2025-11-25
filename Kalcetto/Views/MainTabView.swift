@@ -63,6 +63,7 @@ struct MainTabView: View {
 			.tag(3)
 		}
 		.tint(Color("AccentColor"))
+		.environment(\.colorScheme, .dark)
 	}
 }
 

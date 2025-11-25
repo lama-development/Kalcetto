@@ -6,37 +6,49 @@ struct EmptyStateView: View {
 	let subtitle: String
 
 	var body: some View {
-		VStack(spacing: 16) {
-			// Icon with circular background
+		VStack(spacing: 20) {
+			// Icon with gradient background
 			ZStack {
 				Circle()
-					.fill(Color("TextColor").opacity(0.1))
-					.frame(width: 80, height: 80)
+					.fill(
+						LinearGradient(
+							colors: [
+								Color("TextColor").opacity(0.08),
+								Color("TextColor").opacity(0.03),
+							],
+							startPoint: .topLeading,
+							endPoint: .bottomTrailing
+						)
+					)
+					.frame(width: 88, height: 88)
+				Circle()
+					.strokeBorder(Color("TextColor").opacity(0.1), lineWidth: 2)
+					.frame(width: 88, height: 88)
 				Image(systemName: icon)
-					.font(.system(size: 36, weight: .medium))
-					.foregroundColor(Color("TextColor").opacity(0.6))
+					.font(.system(size: 38, weight: .semibold))
+					.foregroundColor(Color("TextColor").opacity(0.4))
 			}
-			.padding(.top, 8)
+			.padding(.top, 12)
 			// Title and subtitle
-			VStack(spacing: 8) {
+			VStack(spacing: 6) {
 				Text(title)
-					.font(.system(size: 18, weight: .semibold))
+					.font(.system(size: 18, weight: .bold))
 					.foregroundColor(Color("TextColor"))
 					.multilineTextAlignment(.center)
 				Text(subtitle)
-					.font(.system(size: 15, weight: .regular))
-					.foregroundColor(Color("TextColor").opacity(0.6))
+					.font(.system(size: 14, weight: .medium))
+					.foregroundColor(Color("TextColor").opacity(0.5))
 					.multilineTextAlignment(.center)
 			}
 		}
 		.frame(maxWidth: .infinity)
-		.padding(.vertical, 40)
+		.padding(.vertical, 44)
 		.background(
-			RoundedRectangle(cornerRadius: 24)
-				.fill(Color("InputBackgroundColor"))
+			RoundedRectangle(cornerRadius: 20)
+				.fill(Color("TextColor").opacity(0.03))
 				.overlay(
-					RoundedRectangle(cornerRadius: 24)
-						.strokeBorder(Color("TextColor").opacity(0.05), lineWidth: 1)
+					RoundedRectangle(cornerRadius: 20)
+						.strokeBorder(Color("TextColor").opacity(0.08), lineWidth: 1)
 				)
 		)
 	}

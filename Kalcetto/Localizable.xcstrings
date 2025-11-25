@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "it",
   "strings" : {
+    "@%@" : {
+
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
     "%lld %@" : {
       "localizations" : {
         "it" : {
@@ -10,9 +26,6 @@
           }
         }
       }
-    },
-    "%lld pts" : {
-
     },
     "%lld/%lld" : {
       "localizations" : {
@@ -24,11 +37,84 @@
         }
       }
     },
-    "Campo di calcio" : {
-
+    "actions_section_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Links"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collegamenti rapidi"
+          }
+        }
+      }
     },
-    "Completo" : {
-
+    "badges_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badges"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badge"
+          }
+        }
+      }
+    },
+    "explore_fields_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Find nearby"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esplora le strutture nelle vicinanze"
+          }
+        }
+      }
+    },
+    "explore_fields_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Explore Fields"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova Campetti"
+          }
+        }
+      }
+    },
+    "friends_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amici"
+          }
+        }
+      }
     },
     "home_tab" : {
       "extractionState" : "manual",
@@ -64,6 +150,23 @@
         }
       }
     },
+    "match_time_prefix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ore"
+          }
+        }
+      }
+    },
     "matches_tab" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -81,10 +184,24 @@
         }
       }
     },
-    "Mostra tutto" : {
-
+    "my_matches_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My matches"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le mie partite"
+          }
+        }
+      }
     },
-    "nearby_matches" : {
+    "nearby_matches_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -101,8 +218,15 @@
         }
       }
     },
-    "Partite vicine" : {
-
+    "Performance" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance"
+          }
+        }
+      }
     },
     "players_tab" : {
       "extractionState" : "manual",
@@ -202,6 +326,68 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trova partite"
+          }
+        }
+      }
+    },
+    "quick_actions_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Azioni rapide"
+          }
+        }
+      }
+    },
+    "review_players_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate players from recent matches"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valuta i giocatori delle partite recenti"
+          }
+        }
+      }
+    },
+    "review_players_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review Players"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valuta Giocatori"
+          }
+        }
+      }
+    },
+    "to_review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to review"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "da valutare"
           }
         }
       }

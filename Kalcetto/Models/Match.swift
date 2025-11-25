@@ -11,6 +11,7 @@ struct Match: Identifiable, Codable {
 	let id: UUID
 	var title: String
 	var location: String
+	var city: String
 	var date: Date
 	var maxPlayers: Int
 	var currentPlayers: Int
@@ -25,6 +26,7 @@ struct Match: Identifiable, Codable {
 		id: UUID = UUID(),
 		title: String,
 		location: String,
+		city: String,
 		date: Date,
 		maxPlayers: Int,
 		currentPlayers: Int,
@@ -38,6 +40,7 @@ struct Match: Identifiable, Codable {
 		self.id = id
 		self.title = title
 		self.location = location
+		self.city = city
 		self.date = date
 		self.maxPlayers = maxPlayers
 		self.currentPlayers = currentPlayers
@@ -71,6 +74,7 @@ struct Match: Identifiable, Codable {
 		Match(
 			title: "Partita serale",
 			location: "Campo Sportivo Centro",
+			city: "Novara",
 			date: Date().addingTimeInterval(86400),
 			maxPlayers: 10,
 			currentPlayers: 7,
@@ -81,6 +85,7 @@ struct Match: Identifiable, Codable {
 		Match(
 			title: "Torneo del weekend del porco dio madonna",
 			location: "Oratorio San Marco",
+			city: "Milano",
 			date: Date().addingTimeInterval(172800),
 			maxPlayers: 12,
 			currentPlayers: 10,
@@ -91,6 +96,7 @@ struct Match: Identifiable, Codable {
 		Match(
 			title: "Calcetto amichevole",
 			location: "Polisportiva Nord",
+			city: "Torino",
 			date: Date().addingTimeInterval(259200),
 			maxPlayers: 8,
 			currentPlayers: 8,
@@ -104,6 +110,7 @@ struct Match: Identifiable, Codable {
 		Match(
 			title: "Partita domenicale",
 			location: "Campo Sportivo Sud",
+			city: "Novara",
 			date: Date().addingTimeInterval(604800),
 			maxPlayers: 10,
 			currentPlayers: 6,
@@ -115,6 +122,7 @@ struct Match: Identifiable, Codable {
 		Match(
 			title: "Torneo comunale",
 			location: "Stadio Comunale",
+			city: "Roma",
 			date: Date().addingTimeInterval(-86400),
 			maxPlayers: 16,
 			currentPlayers: 16,
