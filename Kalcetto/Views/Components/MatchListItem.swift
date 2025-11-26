@@ -29,7 +29,7 @@ struct MatchListItem: View {
 				.padding(.vertical, 12)
 				.background(
 					RoundedRectangle(cornerRadius: 12)
-						.fill(Color("TextColor").opacity(0.05))
+						.fill(Color("BackgroundColor").opacity(0.5))
 				)
 
 				// Main content
@@ -42,9 +42,9 @@ struct MatchListItem: View {
 							.lineLimit(1)
 						Spacer()
 						if match.isFull {
-							Text("match_status_full")
+							Text(LocalizedStringKey("match_status_full"))
 								.font(.system(size: 10, weight: .bold))
-								.foregroundColor(.white)
+								.foregroundColor(Color("ButtonTextColor"))
 								.padding(.horizontal, 8)
 								.padding(.vertical, 4)
 								.background(
@@ -52,11 +52,9 @@ struct MatchListItem: View {
 										.fill(Color.gray)
 								)
 						} else {
-							Text(
-								"\(match.spotsLeft) \(match.spotsLeft == 1 ? "posto" : "posti")"
-							)
+							Text(String(localized: "\(match.spotsLeft) spot(s) available"))
 							.font(.system(size: 10, weight: .bold))
-							.foregroundColor(.white)
+							.foregroundColor(Color("ButtonTextColor"))
 							.padding(.horizontal, 8)
 							.padding(.vertical, 4)
 							.background(
@@ -68,7 +66,7 @@ struct MatchListItem: View {
 
 					// Time and location
 					HStack(spacing: 12) {
-						HStack(spacing: 5) {
+						HStack(spacing: 3) {
 							Image(systemName: "clock.fill")
 								.font(.system(size: 11, weight: .semibold))
 								.foregroundColor(Color("TextColor").opacity(0.5))
@@ -77,13 +75,13 @@ struct MatchListItem: View {
 								.foregroundColor(Color("TextColor").opacity(0.6))
 						}
 
-						HStack(spacing: 5) {
-							Image(systemName: "mappin.circle.fill")
+						HStack(spacing: 3) {
+							Image(systemName: "location.fill")
 								.font(.system(size: 11, weight: .semibold))
 								.foregroundColor(Color("TextColor").opacity(0.5))
 							Text(match.location)
 								.font(.system(size: 13, weight: .semibold))
-								.foregroundColor(Color("TextColor").opacity(0.6))
+								.foregroundColor(Color("TextColor").opacity(0.5))
 								.lineLimit(1)
 						}
 					}
@@ -126,11 +124,11 @@ struct MatchListItem: View {
 			}
 			.padding(14)
 			.background(
-				RoundedRectangle(cornerRadius: 16)
-					.fill(Color("TextColor").opacity(0.03))
+				RoundedRectangle(cornerRadius: 14)
+					.fill(Color("CardBackgroundColor"))
 					.overlay(
-						RoundedRectangle(cornerRadius: 16)
-							.strokeBorder(Color("TextColor").opacity(0.08), lineWidth: 1)
+						RoundedRectangle(cornerRadius: 14)
+							.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
 					)
 			)
 		}

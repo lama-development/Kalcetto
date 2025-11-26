@@ -16,38 +16,32 @@ struct MatchCard: View {
 		Button(action: onTap) {
 			VStack(spacing: 0) {
 				ZStack(alignment: .topLeading) {
-					Image("SoccerFieldGrass")
-						.resizable()
-						.aspectRatio(contentMode: .fill)
+					// Illustrated grass texture background
+					GrassTextureView()
 						.frame(height: 110)
-						.clipped()
-						.overlay(
-							Color.black.opacity(0.4)
-						)
+					
 					VStack(alignment: .leading, spacing: 6) {
 						// Match status pill
 						HStack {
 							if match.isFull {
-								Text("match_status_full")
+								Text(LocalizedStringKey("match_status_full"))
 									.font(.system(size: 12, weight: .bold))
-									.foregroundColor(.white)
+									.foregroundColor(Color.white)
 									.padding(.horizontal, 12)
 									.padding(.vertical, 6)
 									.background(
 										Capsule()
-											.fill(Color.gray.opacity(0.9))
+											.fill(Color.gray.opacity(0.4))
 									)
 							} else {
-								Text(
-									"\(match.spotsLeft) \(match.spotsLeft == 1 ? "posto" : "posti")"
-								)
+								Text(String(localized: "\(match.spotsLeft) spot(s) available"))
 								.font(.system(size: 12, weight: .bold))
-								.foregroundColor(.white)
+								.foregroundColor(Color.white)
 								.padding(.horizontal, 12)
 								.padding(.vertical, 6)
 								.background(
 									Capsule()
-										.fill(Color.green.opacity(0.95))
+										.fill(Color.green.opacity(0.4))
 								)
 							}
 							Spacer()
@@ -73,7 +67,7 @@ struct MatchCard: View {
 						// Match title
 						Text(match.title)
 							.font(.system(size: 21, weight: .heavy))
-							.foregroundColor(Color("TextColor"))
+							.foregroundColor(Color.white)
 							.lineLimit(1)
 							.multilineTextAlignment(.leading)
 							.shadow(color: .black.opacity(0.4), radius: 3, x: 0, y: 1)
@@ -86,7 +80,7 @@ struct MatchCard: View {
 						// Math date and time
 						ZStack {
 							RoundedRectangle(cornerRadius: 10)
-								.fill(Color("TextColor").opacity(0.05))
+								.fill(Color("BackgroundColor").opacity(0.5))
 								.frame(width: 40, height: 40)
 							Image(systemName: "calendar.badge.clock")
 								.font(.system(size: 17, weight: .bold))
@@ -107,7 +101,7 @@ struct MatchCard: View {
 						// Match location
 						ZStack {
 							RoundedRectangle(cornerRadius: 10)
-								.fill(Color("TextColor").opacity(0.05))
+								.fill(Color("BackgroundColor").opacity(0.5))
 								.frame(width: 40, height: 40)
 							Image(systemName: "mappin.and.ellipse")
 								.font(.system(size: 17, weight: .bold))
@@ -130,20 +124,11 @@ struct MatchCard: View {
 						HStack(spacing: 8) {
 							ZStack {
 								Circle()
-									.fill(
-										LinearGradient(
-											colors: [
-												Color.accentColor.opacity(0.2),
-												Color.accentColor.opacity(0.1),
-											],
-											startPoint: .topLeading,
-											endPoint: .bottomTrailing
-										)
-									)
+									.fill(Color("AccentColor").opacity(0.1))
 									.frame(width: 28, height: 28)
 								Text(String(match.organizerName.prefix(1)).uppercased())
 									.font(.system(size: 12, weight: .bold))
-									.foregroundColor(Color.accentColor.opacity(0.9))
+									.foregroundColor(Color.accentColor)
 							}
 							Text(match.organizerName)
 								.font(.system(size: 13, weight: .semibold))
@@ -186,13 +171,13 @@ struct MatchCard: View {
 					}
 				}
 				.padding(16)
-				.background(Color("TextColor").opacity(0.05))
+				.background(Color("CardBackgroundColor"))
 			}
 			.frame(width: 280)
-			.clipShape(RoundedRectangle(cornerRadius: 20))
+			.clipShape(RoundedRectangle(cornerRadius: 14))
 			.overlay(
-				RoundedRectangle(cornerRadius: 20)
-					.strokeBorder(Color("TextColor").opacity(0.05), lineWidth: 1)
+				RoundedRectangle(cornerRadius: 14)
+					.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
 			)
 		}
 		.buttonStyle(MatchCardButtonStyle())
@@ -208,6 +193,97 @@ struct MatchCardButtonStyle: ButtonStyle {
 				.spring(response: 0.3, dampingFraction: 0.7),
 				value: configuration.isPressed
 			)
+	}
+}
+
+// Illustrated grass texture background
+struct GrassTextureView: View {
+	var body: some View {
+		ZStack {
+			// Base gradient - rich grass green shades
+			LinearGradient(
+				colors: [
+					Color(red: 0.22, green: 0.6, blue: 0.22),
+					Color(red: 0.18, green: 0.52, blue: 0.18),
+					Color(red: 0.15, green: 0.48, blue: 0.15)
+				],
+				startPoint: .topLeading,
+				endPoint: .bottomTrailing
+			)
+			
+			// Checkered mowing pattern
+			GeometryReader { geometry in
+				Canvas { context, size in
+					let stripeWidth: CGFloat = 35
+					var col = 0
+					var x: CGFloat = 0
+					
+					while x < size.width {
+						let rect = CGRect(
+							x: x,
+							y: 0,
+							width: stripeWidth,
+							height: size.height
+						)
+						
+						// Alternate stripe opacity
+						context.fill(
+							Path(rect),
+							with: .color(
+								col % 2 == 0 
+									? Color.black.opacity(0.12)
+									: Color.white.opacity(0.08)
+							)
+						)
+						
+						x += stripeWidth
+						col += 1
+					}
+				}
+			}
+			
+			// Grass texture overlay with small variations
+			GeometryReader { geometry in
+				Canvas { context, size in
+					// Add small dots/specks for grass texture
+					for _ in 0..<150 {
+						let x = CGFloat.random(in: 0...size.width)
+						let y = CGFloat.random(in: 0...size.height)
+						let size = CGFloat.random(in: 1...2)
+						
+						let rect = CGRect(x: x, y: y, width: size, height: size)
+						context.fill(
+							Path(ellipseIn: rect),
+							with: .color(Color.black.opacity(Double.random(in: 0.03...0.08)))
+						)
+					}
+					
+					// Add subtle light spots
+					for _ in 0..<80 {
+						let x = CGFloat.random(in: 0...size.width)
+						let y = CGFloat.random(in: 0...size.height)
+						let size = CGFloat.random(in: 1...3)
+						
+						let rect = CGRect(x: x, y: y, width: size, height: size)
+						context.fill(
+							Path(ellipseIn: rect),
+							with: .color(Color.white.opacity(Double.random(in: 0.05...0.08)))
+						)
+					}
+				}
+			}
+			
+			// Subtle vignette effect
+			RadialGradient(
+				colors: [
+					Color.clear,
+					Color.black.opacity(0.15)
+				],
+				center: .center,
+				startRadius: 50,
+				endRadius: 200
+			)
+		}
 	}
 }
 

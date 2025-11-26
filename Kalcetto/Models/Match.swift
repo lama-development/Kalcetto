@@ -75,7 +75,7 @@ struct Match: Identifiable, Codable {
 			title: "Partita serale",
 			location: "Campo Sportivo Centro",
 			city: "Novara",
-			date: Date().addingTimeInterval(86400),
+			date: Date().addingTimeInterval(81400),
 			maxPlayers: 10,
 			currentPlayers: 7,
 			organizerId: UUID(),

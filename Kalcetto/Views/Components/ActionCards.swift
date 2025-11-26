@@ -13,12 +13,22 @@ struct ActionCards: View {
 		VStack(spacing: 12) {
 			// Review Players Card (Full width)
 			ActionCard(
-				icon: "star.circle.fill",
+				icon: "star.fill",
 				iconColor: Color.orange,
 				title: "review_players_title",
 				subtitle: "review_players_subtitle",
 				badgeCount: pendingReviews > 0 ? pendingReviews : nil,
 				onTap: onReviewPlayers,
+				isFullWidth: true
+			)
+			
+			// Explore Fields Card (Full width)
+			ActionCard(
+				icon: "map.fill",
+				iconColor: Color.green,
+				title: "explore_fields_title",
+				subtitle: "explore_fields_subtitle",
+				onTap: onExploreFields,
 				isFullWidth: true
 			)
 
@@ -44,15 +54,6 @@ struct ActionCards: View {
 				)
 			}
 
-			// Explore Fields Card (Full width)
-			ActionCard(
-				icon: "map.fill",
-				iconColor: Color.green,
-				title: "explore_fields_title",
-				subtitle: "explore_fields_subtitle",
-				onTap: onExploreFields,
-				isFullWidth: true
-			)
 		}
 	}
 }
@@ -75,11 +76,11 @@ struct ActionCard: View {
 					// Icon
 					ZStack {
 						Circle()
-							.fill(iconColor.opacity(0.15))
+							.fill(iconColor.opacity(0.1))
 							.frame(width: 48, height: 48)
 						Image(systemName: icon)
 							.font(.system(size: 20, weight: .semibold))
-							.foregroundColor(iconColor.opacity(0.9))
+							.foregroundColor(iconColor)
 					}
 
 					// Content
@@ -121,10 +122,10 @@ struct ActionCard: View {
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.background(
 					RoundedRectangle(cornerRadius: 14)
-						.fill(Color("TextColor").opacity(0.05))
+						.fill(Color("CardBackgroundColor"))
 						.overlay(
 							RoundedRectangle(cornerRadius: 14)
-								.strokeBorder(Color("TextColor").opacity(0.08), lineWidth: 1)
+								.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
 						)
 				)
 			} else {
@@ -132,11 +133,11 @@ struct ActionCard: View {
 					// Icon
 					ZStack {
 						Circle()
-							.fill(iconColor.opacity(0.15))
+							.fill(iconColor.opacity(0.1))
 							.frame(width: 44, height: 44)
 						Image(systemName: icon)
 							.font(.system(size: 18, weight: .semibold))
-							.foregroundColor(iconColor.opacity(0.9))
+							.foregroundColor(iconColor)
 					}
 
 					// Content
@@ -158,10 +159,10 @@ struct ActionCard: View {
 				.frame(maxWidth: .infinity)
 				.background(
 					RoundedRectangle(cornerRadius: 14)
-						.fill(Color("TextColor").opacity(0.05))
+						.fill(Color("CardBackgroundColor"))
 						.overlay(
 							RoundedRectangle(cornerRadius: 14)
-								.strokeBorder(Color("TextColor").opacity(0.08), lineWidth: 1)
+								.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
 						)
 				)
 			}

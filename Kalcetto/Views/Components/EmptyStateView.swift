@@ -45,10 +45,10 @@ struct EmptyStateView: View {
 		.padding(.vertical, 44)
 		.background(
 			RoundedRectangle(cornerRadius: 20)
-				.fill(Color("TextColor").opacity(0.03))
+				.fill(Color("CardBackgroundColor"))
 				.overlay(
 					RoundedRectangle(cornerRadius: 20)
-						.strokeBorder(Color("TextColor").opacity(0.08), lineWidth: 1)
+						.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
 				)
 		)
 	}

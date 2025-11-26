@@ -46,7 +46,7 @@ struct Player: Identifiable, Codable {
 	static let mock = Player(
 		name: "Mario Rossi",
 		handle: "mariorossi",
-		profileImage: "person.fill",
+		profileImage: "figure.indoor.soccer",
 		points: 450,
 		matchesPlayed: 24,
 		matchesWon: 15,

@@ -18,7 +18,7 @@ struct PlayerCard: View {
 							.frame(width: 32, height: 32)
 							.foregroundColor(Color("TextColor").opacity(0.8))
 					} else {
-						Image(systemName: "figure.soccer")
+						Image(systemName: "person.fill")
 							.resizable()
 							.scaledToFit()
 							.frame(width: 32, height: 32)
@@ -39,14 +39,14 @@ struct PlayerCard: View {
 						HStack(spacing: 4) {
 							Image(systemName: "star.fill")
 								.font(.system(size: 11, weight: .semibold))
-								.foregroundColor(Color.yellow.opacity(0.7))
+								.foregroundColor(Color.yellow)
 							Text(String(format: "%.1f", player.rating))
 								.font(.system(size: 13, weight: .semibold))
-								.foregroundColor(Color("TextColor").opacity(0.7))
+								.foregroundColor(Color("TextColor").opacity(0.6))
 						}
 						.padding(.horizontal, 8)
 						.padding(.vertical, 4)
-						.background(Color.yellow.opacity(0.15))
+						.background(Color.yellow.opacity(0.1))
 						.cornerRadius(6)
 					}
 				}
@@ -61,10 +61,10 @@ struct PlayerCard: View {
 		.buttonStyle(PlainButtonStyle())
 		.background(
 			RoundedRectangle(cornerRadius: 16)
-				.fill(Color("TextColor").opacity(0.05))
+				.fill(Color("CardBackgroundColor"))
 				.overlay(
 					RoundedRectangle(cornerRadius: 16)
-						.stroke(Color("TextColor").opacity(0.1), lineWidth: 1)
+						.stroke(Color("CardOutlineColor"), lineWidth: 1)
 				)
 		)
 	}

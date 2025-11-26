@@ -10,11 +10,11 @@ struct QuickActions: View {
 				HStack(spacing: 14) {
 					ZStack {
 						Circle()
-							.fill(Color("AccentColor").opacity(0.15))
+							.fill(Color("AccentColor").opacity(0.1))
 							.frame(width: 48, height: 48)
 						Image(systemName: "plus")
 							.font(.system(size: 22, weight: .bold))
-							.foregroundColor(Color("AccentColor").opacity(0.9))
+							.foregroundColor(Color("AccentColor"))
 					}
 					VStack(alignment: .leading, spacing: 4) {
 						Text("quick_actions_create_title")
@@ -32,16 +32,15 @@ struct QuickActions: View {
 				.padding(12)
 			}
 			.buttonStyle(GlassButtonStyle())
-			.environment(\.colorScheme, .dark)
 			Button(action: onFindMatch) {
 				HStack(spacing: 14) {
 					ZStack {
 						Circle()
-							.fill(Color.blue.opacity(0.15))
+							.fill(Color("AccentColor").opacity(0.1))
 							.frame(width: 48, height: 48)
 						Image(systemName: "magnifyingglass")
 							.font(.system(size: 20, weight: .bold))
-							.foregroundColor(Color.blue.opacity(0.9))
+							.foregroundColor(Color("AccentColor"))
 					}
 					VStack(alignment: .leading, spacing: 4) {
 						Text("quick_actions_search_title")
@@ -59,7 +58,6 @@ struct QuickActions: View {
 				.padding(12)
 			}
 			.buttonStyle(GlassButtonStyle())
-			.environment(\.colorScheme, .dark)
 		}
 	}
 }

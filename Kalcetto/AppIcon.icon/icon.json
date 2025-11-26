@@ -1,16 +1,27 @@
 {
-  "fill" : "system-light",
+  "fill" : {
+    "linear-gradient" : [
+      "display-p3:0.32549,0.93333,0.42745,1.00000",
+      "srgb:0.15686,0.76078,0.25882,1.00000"
+    ],
+    "orientation" : {
+      "start" : {
+        "x" : 0.5,
+        "y" : 0
+      },
+      "stop" : {
+        "x" : 0.5,
+        "y" : 0.7
+      }
+    }
+  },
   "groups" : [
     {
       "layers" : [
         {
-          "fill" : {
-            "solid" : "display-p3:0.50729,0.68213,0.00000,1.00000"
-          },
-          "glass" : true,
-          "hidden" : false,
-          "image-name" : "Logo.svg",
-          "name" : "Logo"
+          "fill" : "automatic",
+          "image-name" : "Logo 3.svg",
+          "name" : "Logo 3"
         }
       ],
       "shadow" : {

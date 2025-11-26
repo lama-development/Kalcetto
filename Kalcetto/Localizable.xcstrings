@@ -2,7 +2,7 @@
   "sourceLanguage" : "it",
   "strings" : {
     "@%@" : {
-
+      "shouldTranslate" : false
     },
     "%@ %@" : {
       "localizations" : {
@@ -12,10 +12,11 @@
             "value" : "%1$@ %2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld" : {
-
+      "shouldTranslate" : false
     },
     "%lld %@" : {
       "localizations" : {
@@ -25,7 +26,8 @@
             "value" : "%1$lld %2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld/%lld" : {
       "localizations" : {
@@ -35,7 +37,8 @@
             "value" : "%1$lld/%2$lld"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "actions_section_title" : {
       "extractionState" : "manual",
@@ -43,7 +46,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quick Links"
+            "value" : "Quick links"
           }
         },
         "it" : {
@@ -76,8 +79,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Find nearby"
+            "state" : "translated",
+            "value" : "Find nearby pitches"
           }
         },
         "it" : {
@@ -93,14 +96,14 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Explore Fields"
+            "state" : "translated",
+            "value" : "Explore fields"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trova Campetti"
+            "value" : "Trova campetti"
           }
         }
       }
@@ -108,6 +111,12 @@
     "friends_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friends"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -218,16 +227,6 @@
         }
       }
     },
-    "Performance" : {
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Performance"
-          }
-        }
-      }
-    },
     "players_tab" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -333,6 +332,12 @@
     "quick_actions_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick actions"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -364,13 +369,64 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review Players"
+            "value" : "Review players"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Valuta Giocatori"
+            "value" : "Valuta giocatori"
+          }
+        }
+      }
+    },
+    "stats_match_played" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matches"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partite"
+          }
+        }
+      }
+    },
+    "stats_win_loss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win/Loss"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win/Loss"
+          }
+        }
+      }
+    },
+    "stats_win_rate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win Rate"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Win Rate"
           }
         }
       }
@@ -405,6 +461,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostra tutto"
+          }
+        }
+      }
+    },
+    "%lld spot(s) available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spot"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spots"
+                }
+              }
+            }
+          }
+        },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posto"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posti"
+                }
+              }
+            }
           }
         }
       }
