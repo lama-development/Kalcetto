@@ -33,10 +33,6 @@ struct Player: Identifiable, Codable {
 		self.rating = rating
 	}
 
-	var level: Level {
-		Level.getLevel(for: points)
-	}
-
 	var winRate: Double {
 		guard matchesPlayed > 0 else { return 0 }
 		return Double(matchesWon) / Double(matchesPlayed) * 100

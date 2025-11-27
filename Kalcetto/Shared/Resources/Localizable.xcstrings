@@ -18,16 +18,46 @@
     "%lld" : {
       "shouldTranslate" : false
     },
-    "%lld %@" : {
+    "%lld spot(s) available" : {
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spot"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spots"
+                }
+              }
+            }
+          }
+        },
         "it" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld %2$@"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posto"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld posti"
+                }
+              }
+            }
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "%lld/%lld" : {
       "localizations" : {
@@ -461,47 +491,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostra tutto"
-          }
-        }
-      }
-    },
-    "%lld spot(s) available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld spot"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld spots"
-                }
-              }
-            }
-          }
-        },
-        "it" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld posto"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld posti"
-                }
-              }
-            }
           }
         }
       }
