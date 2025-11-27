@@ -53,14 +53,14 @@ struct MatchListItem: View {
 								)
 						} else {
 							Text(String(localized: "\(match.spotsLeft) spot(s) available"))
-							.font(.system(size: 10, weight: .bold))
-							.foregroundColor(Color("ButtonTextColor"))
-							.padding(.horizontal, 8)
-							.padding(.vertical, 4)
-							.background(
-								Capsule()
-									.fill(Color.green)
-							)
+								.font(.system(size: 10, weight: .bold))
+								.foregroundColor(Color("ButtonTextColor"))
+								.padding(.horizontal, 8)
+								.padding(.vertical, 4)
+								.background(
+									Capsule()
+										.fill(Color.green)
+								)
 						}
 					}
 
@@ -150,7 +150,7 @@ struct MatchListItemButtonStyle: ButtonStyle {
 
 #Preview {
 	VStack(spacing: 12) {
-		ForEach(Match.mockMyMatches) { match in
+		ForEach(MockData.Matches.myMatches) { match in
 			MatchListItem(match: match) {
 				print("Match tapped")
 			}

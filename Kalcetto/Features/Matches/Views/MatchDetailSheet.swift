@@ -22,7 +22,7 @@ struct MatchDetailSheet: View {
 								.foregroundColor(Color.white)
 								.lineLimit(2)
 								.shadow(color: .black.opacity(0.4), radius: 3, x: 0, y: 1)
-							
+
 							// Status badge and distance
 							HStack(spacing: 8) {
 								if match.isFull {
@@ -48,7 +48,7 @@ struct MatchDetailSheet: View {
 											.fill(Color.green.opacity(0.5))
 									)
 								}
-								
+
 								if let distance = match.distance {
 									HStack(spacing: 3) {
 										Image(systemName: "location.fill")
@@ -64,7 +64,7 @@ struct MatchDetailSheet: View {
 											.fill(Color.black.opacity(0.4))
 									)
 								}
-								
+
 								Spacer()
 							}
 						}
@@ -161,24 +161,26 @@ struct MatchDetailSheet: View {
 										.font(.system(size: 17, weight: .bold))
 										.foregroundColor(Color("TextColor").opacity(0.8))
 								}
-							VStack(alignment: .leading, spacing: 2) {
-								Text("\(match.actualCurrentPlayers)/\(match.maxPlayers)")
-									.font(.system(size: 15, weight: .bold))
-									.foregroundColor(Color("TextColor"))
-								Text("match_detail_players_registered")
-									.font(.system(size: 13, weight: .medium))
-									.foregroundColor(Color("TextColor").opacity(0.5))
-							}
+								VStack(alignment: .leading, spacing: 2) {
+									Text("\(match.actualCurrentPlayers)/\(match.maxPlayers)")
+										.font(.system(size: 15, weight: .bold))
+										.foregroundColor(Color("TextColor"))
+									Text("match_detail_players_registered")
+										.font(.system(size: 13, weight: .medium))
+										.foregroundColor(Color("TextColor").opacity(0.5))
+								}
 								Spacer()
 							}
-							
+
 							Divider()
 								.background(Color("CardOutlineColor"))
 
 							// Players list (organizer first)
 							VStack(spacing: 8) {
 								// Organizer as first player
-								Button(action: { viewPlayer(organizerName: match.organizerName) }) {
+								Button(action: {
+									viewPlayer(organizerName: match.organizerName)
+								}) {
 									HStack(spacing: 10) {
 										ZStack {
 											Circle()
@@ -203,12 +205,21 @@ struct MatchDetailSheet: View {
 															.fill(Color("AccentColor").opacity(0.15))
 													)
 											}
-											Text("@organizer")
-												.font(.system(size: 12, weight: .medium))
-												.foregroundColor(Color("TextColor").opacity(0.5))
+											HStack(spacing: 6) {
+												Text("@\(match.organizerHandle)")
+													.font(.system(size: 12, weight: .medium))
+													.foregroundColor(Color("TextColor").opacity(0.5))
+												HStack(spacing: 3) {
+													Image(systemName: "star.fill")
+														.font(.system(size: 10, weight: .semibold))
+														.foregroundColor(Color.yellow)
+													Text(String(format: "%.1f", match.organizerRating))
+														.font(.system(size: 12, weight: .medium))
+														.foregroundColor(Color("TextColor").opacity(0.5))
+												}
+											}
 										}
 										Spacer()
-										
 										Image(systemName: "chevron.right")
 											.font(.system(size: 12, weight: .bold))
 											.foregroundColor(Color("TextColor").opacity(0.3))
@@ -244,12 +255,14 @@ struct MatchDetailSheet: View {
 																.foregroundColor(Color.yellow)
 															Text(String(format: "%.1f", player.rating))
 																.font(.system(size: 12, weight: .medium))
-																.foregroundColor(Color("TextColor").opacity(0.5))
+																.foregroundColor(
+																	Color("TextColor").opacity(0.5)
+																)
 														}
 													}
 												}
 												Spacer()
-												
+
 												Image(systemName: "chevron.right")
 													.font(.system(size: 12, weight: .bold))
 													.foregroundColor(Color("TextColor").opacity(0.3))
@@ -268,65 +281,65 @@ struct MatchDetailSheet: View {
 								.overlay(
 									RoundedRectangle(cornerRadius: 14)
 										.strokeBorder(Color("CardOutlineColor"), lineWidth: 1)
-							)
-					)
+								)
+						)
 
+					}
+					.padding(.horizontal, 20)
+					.padding(.top, 30)
+					.padding(.bottom, 160)
 				}
-				.padding(.horizontal, 20)
-				.padding(.top, 30)
-				.padding(.bottom, 160)
 			}
-		}
-		.background(Color("BackgroundColor").ignoresSafeArea())
+			.background(Color("BackgroundColor").ignoresSafeArea())
 
-		// Floating CTA buttons at bottom
-		VStack {
-			Spacer()
-			
-			VStack(spacing: 10) {
-				if !match.isFull {
-					Button(action: joinMatch) {
-						HStack(spacing: 8) {
-							Image(systemName: "paperplane.fill")
-								.font(.system(size: 16, weight: .bold))
-							Text("match_detail_join")
-								.font(.system(size: 18, weight: .bold))
+			// Floating CTA buttons at bottom
+			VStack {
+				Spacer()
+
+				VStack(spacing: 10) {
+					if !match.isFull {
+						Button(action: joinMatch) {
+							HStack(spacing: 8) {
+								Image(systemName: "paperplane.fill")
+									.font(.system(size: 15, weight: .bold))
+								Text("match_detail_join")
+									.font(.system(size: 17, weight: .bold))
+							}
+							.foregroundColor(Color("ButtonTextColor"))
+							.frame(maxWidth: .infinity)
+							.padding(.vertical, 12)
 						}
-						.foregroundColor(Color("ButtonTextColor"))
+						.buttonStyle(GlassProminentButtonStyle())
+					}
+
+					Button(action: shareMatch) {
+						HStack(spacing: 8) {
+							Image(systemName: "square.and.arrow.up")
+								.font(.system(size: 15, weight: .bold))
+							Text("match_detail_share")
+								.font(.system(size: 17, weight: .bold))
+						}
+						.foregroundColor(Color("TextColor").opacity(0.7))
 						.frame(maxWidth: .infinity)
 						.padding(.vertical, 12)
 					}
-					.buttonStyle(GlassProminentButtonStyle())
+					.buttonStyle(GlassButtonStyle())
 				}
-
-				Button(action: shareMatch) {
-					HStack(spacing: 8) {
-						Image(systemName: "square.and.arrow.up")
-							.font(.system(size: 16, weight: .bold))
-						Text("match_detail_share")
-							.font(.system(size: 18, weight: .bold))
-					}
-					.foregroundColor(Color("TextColor").opacity(0.7))
-					.frame(maxWidth: .infinity)
-					.padding(.vertical, 12)
-				}
-				.buttonStyle(GlassButtonStyle())
-			}
-			.padding(.horizontal, 20)
-			.padding(.bottom, 10)
-			.padding(.top, 10)
-			.background(
-				LinearGradient(
-					gradient: Gradient(colors: [
-						Color("BackgroundColor").opacity(0),
-						Color("BackgroundColor")
-					]),
-					startPoint: .top,
-					endPoint: .bottom
+				.padding(.horizontal, 20)
+				.padding(.bottom, 10)
+				.padding(.top, 10)
+				.background(
+					LinearGradient(
+						gradient: Gradient(colors: [
+							Color("BackgroundColor").opacity(0),
+							Color("BackgroundColor"),
+						]),
+						startPoint: .top,
+						endPoint: .bottom
+					)
+					.ignoresSafeArea()
 				)
-				.ignoresSafeArea()
-			)
-		}
+			}
 
 			// Close button overlayed
 			Button(action: { dismiss() }) {
@@ -367,12 +380,12 @@ struct MatchDetailSheet: View {
 		// TODO: Implement share match logic
 		print("Share match: \(match.title)")
 	}
-	
+
 	private func viewPlayer(player: Player) {
 		// TODO: Navigate to player profile
 		print("View player: \(player.name)")
 	}
-	
+
 	private func viewPlayer(organizerName: String) {
 		// TODO: Navigate to organizer profile
 		print("View organizer: \(organizerName)")
@@ -392,5 +405,5 @@ struct PlayerCardButtonStyle: ButtonStyle {
 }
 
 #Preview {
-	MatchDetailSheet(match: Match.mockNearby[0])
+	MatchDetailSheet(match: MockData.Matches.nearby[0])
 }

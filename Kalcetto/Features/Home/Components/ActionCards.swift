@@ -21,7 +21,7 @@ struct ActionCards: View {
 				onTap: onReviewPlayers,
 				isFullWidth: true
 			)
-			
+
 			// Explore Fields Card (Full width)
 			ActionCard(
 				icon: "map.fill",

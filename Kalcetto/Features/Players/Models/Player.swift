@@ -37,16 +37,4 @@ struct Player: Identifiable, Codable {
 		guard matchesPlayed > 0 else { return 0 }
 		return Double(matchesWon) / Double(matchesPlayed) * 100
 	}
-
-	// Mock data
-	static let mock = Player(
-		name: "Mario Rossi",
-		handle: "mariorossi",
-		profileImage: "figure.indoor.soccer",
-		points: 450,
-		matchesPlayed: 24,
-		matchesWon: 15,
-		matchesLost: 9,
-		rating: 4.2
-	)
 }

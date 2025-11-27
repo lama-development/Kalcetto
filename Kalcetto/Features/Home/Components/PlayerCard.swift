@@ -71,7 +71,7 @@ struct PlayerCard: View {
 }
 
 #Preview {
-	PlayerCard(player: Player.mock) {
+	PlayerCard(player: MockData.Players.currentUser) {
 		print("Card tapped")
 	}
 	.padding()

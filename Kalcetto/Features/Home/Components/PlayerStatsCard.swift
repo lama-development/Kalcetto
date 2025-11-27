@@ -84,7 +84,7 @@ struct StatBox: View {
 }
 
 #Preview {
-	PlayerStatsCard(player: Player.mock)
+	PlayerStatsCard(player: MockData.Players.currentUser)
 		.padding()
 		.background(Color("BackgroundColor"))
 }

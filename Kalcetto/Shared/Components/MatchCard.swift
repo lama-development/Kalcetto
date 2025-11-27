@@ -19,7 +19,7 @@ struct MatchCard: View {
 					// Illustrated grass texture background
 					GrassTextureView()
 						.frame(height: 110)
-					
+
 					VStack(alignment: .leading, spacing: 6) {
 						// Match status pill
 						HStack {
@@ -35,14 +35,14 @@ struct MatchCard: View {
 									)
 							} else {
 								Text(String(localized: "\(match.spotsLeft) spot(s) available"))
-								.font(.system(size: 12, weight: .bold))
-								.foregroundColor(Color.white)
-								.padding(.horizontal, 12)
-								.padding(.vertical, 6)
-								.background(
-									Capsule()
-										.fill(Color.green.opacity(0.4))
-								)
+									.font(.system(size: 12, weight: .bold))
+									.foregroundColor(Color.white)
+									.padding(.horizontal, 12)
+									.padding(.vertical, 6)
+									.background(
+										Capsule()
+											.fill(Color.green.opacity(0.4))
+									)
 							}
 							Spacer()
 							// Match distance from user
@@ -205,19 +205,19 @@ struct GrassTextureView: View {
 				colors: [
 					Color(red: 0.22, green: 0.6, blue: 0.22),
 					Color(red: 0.18, green: 0.52, blue: 0.18),
-					Color(red: 0.15, green: 0.48, blue: 0.15)
+					Color(red: 0.15, green: 0.48, blue: 0.15),
 				],
 				startPoint: .topLeading,
 				endPoint: .bottomTrailing
 			)
-			
+
 			// Checkered mowing pattern
 			GeometryReader { geometry in
 				Canvas { context, size in
 					let stripeWidth: CGFloat = 35
 					var col = 0
 					var x: CGFloat = 0
-					
+
 					while x < size.width {
 						let rect = CGRect(
 							x: x,
@@ -225,23 +225,23 @@ struct GrassTextureView: View {
 							width: stripeWidth,
 							height: size.height
 						)
-						
+
 						// Alternate stripe opacity
 						context.fill(
 							Path(rect),
 							with: .color(
-								col % 2 == 0 
+								col % 2 == 0
 									? Color.black.opacity(0.12)
 									: Color.white.opacity(0.08)
 							)
 						)
-						
+
 						x += stripeWidth
 						col += 1
 					}
 				}
 			}
-			
+
 			// Grass texture overlay with small variations
 			GeometryReader { geometry in
 				Canvas { context, size in
@@ -250,20 +250,20 @@ struct GrassTextureView: View {
 						let x = CGFloat.random(in: 0...size.width)
 						let y = CGFloat.random(in: 0...size.height)
 						let size = CGFloat.random(in: 1...2)
-						
+
 						let rect = CGRect(x: x, y: y, width: size, height: size)
 						context.fill(
 							Path(ellipseIn: rect),
 							with: .color(Color.black.opacity(Double.random(in: 0.03...0.08)))
 						)
 					}
-					
+
 					// Add subtle light spots
 					for _ in 0..<80 {
 						let x = CGFloat.random(in: 0...size.width)
 						let y = CGFloat.random(in: 0...size.height)
 						let size = CGFloat.random(in: 1...3)
-						
+
 						let rect = CGRect(x: x, y: y, width: size, height: size)
 						context.fill(
 							Path(ellipseIn: rect),
@@ -272,12 +272,12 @@ struct GrassTextureView: View {
 					}
 				}
 			}
-			
+
 			// Subtle vignette effect
 			RadialGradient(
 				colors: [
 					Color.clear,
-					Color.black.opacity(0.15)
+					Color.black.opacity(0.15),
 				],
 				center: .center,
 				startRadius: 50,
@@ -290,7 +290,7 @@ struct GrassTextureView: View {
 #Preview {
 	ScrollView(.horizontal) {
 		HStack(spacing: 12) {
-			ForEach(Match.mockNearby) { match in
+			ForEach(MockData.Matches.nearby) { match in
 				MatchCard(match: match) {
 					print("Match tapped")
 				}
