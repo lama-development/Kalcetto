@@ -10,6 +10,8 @@ class HomeViewModel: ObservableObject {
 	@Published var pendingReviews: Int = 3
 	@Published var badgesEarned: Int = 12
 	@Published var friendsCount: Int = 48
+	@Published var selectedMatch: Match?
+	@Published var showMatchDetail: Bool = false
     
 	init() {
 		// Initialize with mock data
@@ -53,8 +55,8 @@ class HomeViewModel: ObservableObject {
 	}
     
 	func selectMatch(_ match: Match) {
-		// TODO: Navigate to match detail screen
-		print("Selected match: \(match.title)")
+		selectedMatch = match
+		showMatchDetail = true
 	}
 	
 	func reviewPlayers() {

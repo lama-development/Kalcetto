@@ -135,6 +135,11 @@ struct HomeView: View {
 		.onAppear {
 			viewModel.loadData()
 		}
+		.sheet(isPresented: $viewModel.showMatchDetail) {
+			if let match = viewModel.selectedMatch {
+				MatchDetailSheet(match: match)
+			}
+		}
 	}
 }
 
